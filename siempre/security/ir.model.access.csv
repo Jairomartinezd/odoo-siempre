@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_liquidez,liquidez,model_liquidez,siempre.group_administrador,1,1,1,1
+access_eficiencia,eficiencia,model_eficiencia,siempre.group_administrador,1,1,1,1

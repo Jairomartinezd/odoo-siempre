@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+
+    <template id="inicio_liquidez_RC" name="Indicadores Financieros de Liquidez SIEMPRE"  >
+    	<t t-call="website.layout">
+	    	<div class="container">
+	    	 	<br/>
+	    	 	<header class="row">
+	    	 		<div class="col-md-12 text-center well well-sm">
+						<a href="/indicadores/liquidez"><button class="btn btn-info btn-lg">Liquidez</button></a>
+						<a href="/indicadores/eficiencia"><button class="btn btn-outline-info btn-lg">Eficiencia</button></a>
+					</div>
+				</header>
+				<br/><br/>
+	    	 	<nav class="row">
+					<div class="col-md-12 text-center well well-sm">
+						<a href="#"><button class="btn btn-success btn-lg">Razon Corriente</button></a>
+						<a href="#"><button class="btn btn-outline-success btn-lg">Prueba Acida</button></a>
+						<a href="#"><button class="btn btn-outline-success btn-lg">Prueba Super Acida</button></a>
+						<a href="#"><button class="btn btn-outline-success btn-lg">Capital Neto de Trabajo</button></a>
+						<a href="#"><button class="btn btn-outline-success btn-lg">Disponibilidad Inmediata</button></a>
+						<a href="#"><button class="btn btn-outline-success btn-lg">Cobertura de Pagos</button></a>
+					</div>
+				</nav>
+				<br/><br/>
+	    	 	<nav class="row">
+	    	 		<div class="col-md-12 text-center well well-sm">
+						<h1 align="center">Razon Corriente</h1>
+						<p align="justify" style="font-size:18px;">Indica la capacidad que tiene la empresa para cumplir con sus obligaciones financieras, deudas o pasivos a corto plazo. Al Dividir el Activo Corriente entre el Pasivo Corriente, sabremos cuantos activos corrientes tendremos para cubrir o respaldar esos pasivos exigibles a corto plazo.</p>
+					</div>
+					<br/><br/><br/>
+				</nav>
+				<nav class="row">
+					<div class="col-md-6 text-center well well-sm">
+						<table class="table table-dark">
+						  <thead>
+						    <tr>
+						      <th scope="col">#</th>
+						      <th scope="col">First</th>
+						      <th scope="col">Last</th>
+						      <th scope="col">Handle</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <th scope="row">1</th>
+						      <td>Mark</td>
+						      <td>Otto</td>
+						      <td>@mdo</td>
+						    </tr>
+						    <tr>
+						      <th scope="row">2</th>
+						      <td>Jacob</td>
+						      <td>Thornton</td>
+						      <td>@fat</td>
+						    </tr>
+						    <tr>
+						      <th scope="row">3</th>
+						      <td>Larry</td>
+						      <td>the Bird</td>
+						      <td>@twitter</td>
+						    </tr>
+						  </tbody>
+						</table>
+					</div>
+					<div class="col-md-6 text-center well well-sm">
+						<script type="text/javascript">
+							<![CDATA[
+							Highcharts.chart('container', {
+							    chart: {
+							        type: 'column'
+							    },
+							    title: {
+							        text: 'Column chart with negative values'
+							    },
+							    xAxis: {
+							        categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
+							    },
+							    credits: {
+							        enabled: false
+							    },
+							    series: [{
+							        name: 'John',
+							        data: [5, 3, 4, 7, 2]
+							    }, {
+							        name: 'Jane',
+							        data: [2, -2, -3, 2, 1]
+							    }, {
+							        name: 'Joe',
+							        data: [3, 4, 4, -2, 5]
+							    }]
+							});
+							]]>
+						</script>
+					</div>
+				</nav>
+	    	</div>
+    	</t>
+    </template>
+
+    <!-- Import de los Js y CSS -->
+    <template id="assets_indicadores" position="inside" name="importe" inherit_id="website.assets_frontend">
+        <xpath expr="//link[last()]" position="after">
+            <link rel="stylesheet" href="/indicadores/static/src/highcharts/css/highcharts.css"/>
+
+        </xpath>
+
+        <xpath expr="//script[last()]" position="after">
+            <script type="text/javascript" src="/indicadores/static/src/highcharts/highcharts.js"/>
+            <script type="text/javascript" src="/indicadores/static/src/highcharts/modules/exporting.js"/>
+            <script type="text/javascript" src="/indicadores/static/src/highcharts/modules/export-data.js"/>
+        </xpath>
+    </template>
+
+</odoo>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+
+    <template id="inicio_liquidez_rc" name="Indicadores Financieros de Liquidez SIEMPRE" >
+
+    	<t t-call="website.layout">
+	    	<div class="container">
+	    	 	<br/>
+	    	 	<header class="row">
+	    	 		<div class="col-md-12 text-center well well-sm">
+						<a href="/indicadores/liquidez"><button class="btn btn-info btn-lg">Liquidez</button></a>
+						<a href="/indicadores/eficiencia"><button class="btn btn-outline-info btn-lg">Eficiencia</button></a>
+					</div>
+				</header>
+				<br/><br/>
+	    	 	<nav class="row">
+					<div class="col-md-12 text-center well well-sm">
+						<a href="#"><button class="btn btn-success btn-lg">Razon Corriente</button></a>
+						<a href="/indicadores/liquidez/pruebaAcida"><button class="btn btn-outline-success btn-lg">Prueba Acida</button></a>
+						<a href="/indicadores/liquidez/pruebaSuperAcida"><button class="btn btn-outline-success btn-lg">Prueba Super Acida</button></a>
+						<a href="/indicadores/liquidez/capitalTrabajo"><button class="btn btn-outline-success btn-lg">Capital Neto de Trabajo</button></a>
+						<a href="/indicadores/liquidez/dispInmediata"><button class="btn btn-outline-success btn-lg">Disponibilidad Inmediata</button></a>
+						<a href="/indicadores/liquidez/coberturaPago"><button class="btn btn-outline-success btn-lg">Cobertura de Pagos</button></a>
+					</div>
+				</nav>
+				<br/><br/>
+	    	 	<nav class="row">
+	    	 		<div class="col-md-12 text-center well well-sm">
+						<h1 align="center">Razon Corriente</h1>
+						<p align="justify" style="font-size:18px;">Indica la capacidad que tiene la empresa para cumplir con sus obligaciones financieras, deudas o pasivos a corto plazo. Al Dividir el Activo Corriente entre el Pasivo Corriente, sabremos cuantos activos corrientes tendremos para cubrir o respaldar esos pasivos exigibles a corto plazo.</p>
+					</div>
+					<br/><br/><br/>
+				</nav>
+				<nav class="row">
+					<!-- <div class="card" > -->
+						<div class="col-md-6 text-center well well-sm">
+							<table class="table table-dark">
+							  <thead>
+							    <tr>
+							      <th scope="col">#</th>
+							      <th scope="col">Razon Corriente</th>
+							      <th scope="col">Mes y Año</th>
+							    </tr>
+							  </thead>
+							  <tbody>
+
+	                            <tr t-foreach="modelo_liquidez" t-as="liquidez" t-att-value="liquidez.id" 
+                                	t-att-class="'columna'"
+	                            	>
+
+							      	<th scope="row"><t t-esc="liquidez.id"> </t></th>
+	                                <td > <t t-esc="liquidez.activo_corriente/liquidez.pasivo_corriente"> </t> </td>
+	                                <td > <t t-esc="liquidez.fecha_balance"> </t> </td>
+	                            </tr>
+
+							  </tbody>
+							</table>
+						</div>
+                    <!-- </div> -->
+					<!-- aqui va el contenedor que grafica -->
+					<div id="container" style="width:100%; height:400px;"></div> 
+
+					<!-- este es el script ESTATICO que carga informacion en ese chart -->
+					<div class="col-md-6 text-center well well-sm">
+						<div id="container" style="width:100%; height:400px;"></div> <!-- aqui va el contenedor que grafica -->
+						<script type="text/javascript">
+								document.addEventListener('DOMContentLoaded', function () {
+
+								var algo = $('tr.columna');
+								var lista_valores = []
+								algo.each(function(index, obj){
+								 	var columna = $('td',this);
+								 	console.log(columna.get(0));
+								 	lista_valores.push( columna.get(0) )
+
+								});
+
+							 	console.log(lista_valores);
+
+
+
+							    var myChart = 	Highcharts.chart('container', {
+
+								    title: {
+								        text: 'Solar Employment Growth by Sector, 2010-2016'
+								    },
+
+								    subtitle: {
+								        text: 'Source: thesolarfoundation.com'
+								    },
+
+								    yAxis: {
+								        title: {
+								            text: 'Number of Employees'
+								        }
+								    },
+								    legend: {
+								        layout: 'vertical',
+								        align: 'right',
+								        verticalAlign: 'middle'
+								    },
+
+								    plotOptions: {
+								        series: {
+								            label: {
+								                connectorAllowed: false
+								            },
+								            pointStart: 2010
+								        }
+								    },
+
+								    series: [{
+								        name: 'Resultado',
+								        data: lista_valores,
+								    }],
+
+								    responsive: {
+								        rules: [{
+								            condition: {
+								                maxWidth: 500
+								            },
+								            chartOptions: {
+								                legend: {
+								                    layout: 'horizontal',
+								                    align: 'center',
+								                    verticalAlign: 'bottom'
+								                }
+								            }
+								        }]
+								    }
+
+								});
+
+
+
+
+
+
+							});
+						</script>
+					</div>
+
+				</nav>
+				<!-- <div>
+					<H1>
+						AQUI VAN TUS DATOS que vienen desde el controller...!!
+					</H1>
+                    <div class="card" >
+							<div class="col-md-6 text-center well well-sm">
+								<table class="table table-dark">
+								  <thead>
+								    <tr>
+								      <th scope="col">#</th>
+								      <th scope="col">activo_corriente</th>
+								      <th scope="col">pasivo_corriente</th>
+								      <th scope="col">inventario</th>
+								    </tr>
+								  </thead>
+								  <tbody>
+	
+		                            <tr  
+		                                t-foreach="modelo_liquidez" t-as="liquidez" t-att-value="liquidez" >
+								      <th scope="row"><t t-esc="liquidez.id"> </t></th>
+		                                <td > <t t-esc="liquidez.activo_corriente"> </t> </td>
+		                                <td > <t t-esc="liquidez.pasivo_corriente"> </t> </td>
+		                                <td > <t t-esc="liquidez.inventario"> </t> </td>
+		                            </tr>
+
+								  </tbody>
+								</table>
+							</div>
+                    </div>
+				</div> -->
+	    	</div>
+    	</t>
+    </template>
+
+    <!-- Import de los Js y CSS -->
+    <template id="assets_indicadores"  name="importe" inherit_id="website.assets_frontend">
+        <xpath expr="//link[last()]" position="after">
+            <link rel="stylesheet" href="/indicadores/static/src/highcharts/css/highcharts.css"/>
+        </xpath>
+
+        <xpath expr="//script[last()]" position="after">
+            <script type="text/javascript" src="/indicadores/static/src/highcharts/highcharts.js"/>
+            <script type="text/javascript" src="/indicadores/static/src/highcharts/modules/exporting.js"/>
+            <script type="text/javascript" src="/indicadores/static/src/highcharts/modules/export-data.js"/>
+        </xpath>
+    </template>
+
+
+
+</odoo>

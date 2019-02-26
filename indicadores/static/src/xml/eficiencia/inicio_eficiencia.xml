@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="inicio_eficiencia" name="Indicadores Financieros de Eficiencia SIEMPRE"  >
+    	<t t-call="website.layout">
+	    	<div class="container">
+	    	 	<br/>
+	    	 	<header class="row">
+	    	 		<div class="col-md-12 text-center well well-sm">
+						<a href="/indicadores/liquidez"><button class="btn btn-outline-info btn-lg">Liquidez</button></a>
+						<a href="#"><button class="btn btn-info btn-lg">Eficiencia</button></a>
+					</div>
+					<br/><br/><br/>
+					<div class="col-md-12 text-center well well-sm">
+						<h1 align="center">Indicadores de Eficiencia</h1>
+						<p align="justify" style="font-size:18px;">Establecen la relacion entre los costos de los insumos y los productos de proceso; determinan la productividad con la cual se administran los recursos, para la obtencion de los resultados del proceso y el cumplimiento de los objetivos. Los indicadores de eficiencia miden el nivel de ejecucion del proceso, se concentran en el como se hicieron las cosas y miden el rendimiento de los recursos utilizados por un proceso.</p>
+					</div>
+				</header>
+				<br/><br/>
+	    	 	<nav class="row">
+					<div class="col-md-12 text-center well well-sm">
+						<a href="/indicadores/eficiencia/eficiencia"><button class="btn btn-success btn-lg">Eficiencia</button></a>
+						<a href="/indicadores/eficiencia/rotInv"><button class="btn btn-success btn-lg">Rotacion de Inventarios</button></a>
+						<a href="/indicadores/eficiencia/invExist"><button class="btn btn-success btn-lg">Inventarios en Existencia</button></a>
+						<a href="/indicadores/eficiencia/rotCart"><button class="btn btn-success btn-lg">Rotacion de Cartera</button></a>
+						<a href="/indicadores/eficiencia/perCob"><button class="btn btn-success btn-lg">Periodos de Cobro</button></a>
+						<a href="/indicadores/eficiencia/rotAct"><button class="btn btn-success btn-lg">Rotacion de Activo</button></a><br/><br/>
+						<a href="/indicadores/eficiencia/rotProv"><button class="btn btn-success btn-lg">Rotacion de Proveedores</button></a>
+					</div>
+				</nav>
+	    	</div>
+    	</t>
+    </template>
+
+</odoo>

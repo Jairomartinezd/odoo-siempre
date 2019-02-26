@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+
+    <template id="inicio_liquidez" name="Indicadores Financieros de Liquidez SIEMPRE"  >
+    	<t t-call="website.layout">
+	    	<div class="container">
+	    	 	<br/>
+	    	 	<header class="row">
+	    	 		<div class="col-md-12 text-center well well-sm">
+						<a href="#"><button class="btn btn-info btn-lg">Liquidez</button></a>
+						<a href="/indicadores/eficiencia"><button class="btn btn-outline-info btn-lg">Eficiencia</button></a>
+					</div>
+					<br/><br/><br/>
+					<div class="col-md-12 text-center well well-sm">
+						<h1 align="center">Indicador de Liquidez</h1>
+						<p align="justify" style="font-size:18px;">Miden la capacidad de la empresa para satisfacer o cubrir sus obligaciones a corto plazo, en funcion a la tenencia de activos liquidos, mas no a la capacidad de generacion de efectivo.</p>
+					</div>
+				</header>
+				<br/><br/>
+	    	 	<nav class="row">
+					<div class="col-md-12 text-center well well-sm">
+						<a href="/indicadores/liquidez/razonCorriente"><button class="btn btn-success btn-lg">Razon Corriente</button></a>
+						<a href="/indicadores/liquidez/pruebaAcida"><button class="btn btn-success btn-lg">Prueba Acida</button></a>
+						<a href="/indicadores/liquidez/pruebaSuperAcida"><button class="btn btn-success btn-lg">Prueba Super Acida</button></a>
+						<a href="/indicadores/liquidez/capitalTrabajo"><button class="btn btn-success btn-lg">Capital Neto de Trabajo</button></a>
+						<a href="/indicadores/liquidez/dispInmediata"><button class="btn btn-success btn-lg">Disponibilidad Inmediata</button></a>
+						<a href="/indicadores/liquidez/coberturaPago"><button class="btn btn-success btn-lg">Cobertura de Pagos</button></a>
+					</div>
+				</nav>
+	    	</div>
+    	</t>
+    </template>
+
+</odoo>

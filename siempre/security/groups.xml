@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+
+	<!-- Category -->
+    <record id="siempre_category" model="ir.module.category">
+        <field name="name">Grupos de Permisos: SIEMPRE</field>
+        <field name="description">Acceso a las funciones de Indicadores Financieros</field>
+        <field name="sequence">16</field>
+    </record>
+
+    <!-- Administrador -->
+    <record id="liquidez_administrador" model="res.groups">
+        <field name="name">Administrador de Liquidez</field>
+        <field name="category_id" ref="siempre.siempre_category"/>
+    </record>
+    <record id="eficiencia_administrador" model="res.groups">
+        <field name="name">Administrador de Eficiencia</field>
+        <field name="category_id" ref="siempre.siempre_category"/>
+    </record>
+
+     <!-- Permisos predeterminados para: Administrador -->
+    <record id="group_administrador" model="res.groups">
+        <field name="name">Administrador</field>
+        <field name="category_id" ref="siempre.siempre_category"/>
+        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+    </record>
+
+</odoo>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Menú principal en la parte superior -->    
+    <menuitem id="main_siempre" name="SIEMPRE" sequence="30"
+        web_icon="siempre,static/src/img/siempre.png" />
+</odoo>

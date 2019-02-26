@@ -1,0 +1,23 @@
+<odoo>
+  <data>
+    <!-- Menu items -->
+	<!-- Modify top menu item -->
+	<!-- <menuitem id="siempre.menu_todo_task" name="To-Do" /> -->
+	<!-- App menu items -->
+	<!-- <menuitem id="menu_todo_task_view"
+	  name="Tasks"
+	  parent="siempe.menu_todo_task"
+	  sequence="10"
+	  action="siempre.action_todo_task" />
+	<menuitem id="menu_todo_config"
+	  name="Configuration"
+	  parent="siempre.menu_todo_task"
+	  sequence="100"
+	  groups="base.group_system" /> 
+	<menuitem id="menu_todo_task_stage"
+	  name="Stages"
+	  parent="menu_todo_config"
+	  sequence="10"
+	  action="action_todo_stage" /> -->
+  </data>
+</odoo>

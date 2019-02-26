@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="indicador_visual" model="ir.actions.act_url">
+                <field name="name">Indicadores</field>
+                <field name="type">ir.actions.act_url</field>
+                <field name="target">new</field>
+                <field name="url">http://localhost:8069/indicadores</field>
+    </record>
+   <!-- Menú Superior -->
+    <menuitem id="main_indicador_visual"
+        name="Resultados"
+        sequence="4"
+        parent="main_siempre"/>
+    <menuitem id="listado_indicador"
+        name="Haz Click Aqui"
+        sequence="4"
+        action="indicador_visual"
+        parent="main_indicador_visual"/>
+
+</odoo>

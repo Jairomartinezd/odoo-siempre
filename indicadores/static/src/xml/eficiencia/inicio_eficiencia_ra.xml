@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+
+    <template id="inicio_eficiencia_ra" name="Indicadores Financieros de Eficiencia SIEMPRE" >
+
+    	<t t-call="website.layout">
+	    	<div class="container">
+	    	 	<br/>
+	    	 	<header class="row">
+	    	 		<div class="col-md-12 text-center well well-sm">
+						<a href="/indicadores/liquidez"><button class="btn btn-outline-info btn-lg">Liquidez</button></a>
+						<a href="/indicadores/eficiencia"><button class="btn btn-info btn-lg">Eficiencia</button></a>
+					</div>
+				</header>
+				<br/><br/>
+	    	 	<nav class="row">
+					<div class="col-md-12 text-center well well-sm">
+						<a href="/indicadores/eficiencia/eficiencia"><button class="btn btn-outline-success btn-lg">Eficiencia</button></a>
+						<a href="/indicadores/eficiencia/rotInv"><button class="btn btn-outline-success btn-lg">Rotacion de Inventarios</button></a>
+						<a href="/indicadores/eficiencia/invExist"><button class="btn btn-outline-success btn-lg">Inventarios en Existencia</button></a>
+						<a href="/indicadores/eficiencia/rotCart"><button class="btn btn-outline-success btn-lg">Rotacion de Cartera</button></a>
+						<a href="/indicadores/eficiencia/perCob"><button class="btn btn-outline-success btn-lg">Periodos de Cobro</button></a>
+						<a href="#"><button class="btn btn-success btn-lg">Rotacion de Activo</button></a><br/><br/>
+						<a href="/indicadores/eficiencia/rotProv"><button class="btn btn-outline-success btn-lg">Rotacion de Proveedores</button></a>
+					</div>
+				</nav>
+				<br/><br/>
+	    	 	<nav class="row">
+	    	 		<div class="col-md-12 text-center well well-sm">
+						<h1 align="center">Rotacion de Activo</h1>
+						<p align="justify" style="font-size:18px;">Es un indicador de productividad. Mide cuantos retornos genera cada unidad de moneda invertida en activo total.</p>
+					</div>
+					<br/><br/><br/>
+				</nav>
+				<nav class="row">
+					<!-- <div class="card" > -->
+						<div class="col-md-6 text-center well well-sm">
+							<table class="table table-dark">
+							  <thead>
+							    <tr>
+							      <th scope="col">#</th>
+							      <th scope="col">Rotacion de Activo</th>
+							      <th scope="col">Mes y Año</th>
+							    </tr>
+							  </thead>
+							  <tbody>
+
+	                            <tr t-foreach="modelo_eficiencia" t-as="eficiencia" t-att-value="eficiencia" >
+							      <th scope="row"><t t-esc="eficiencia.id"> </t></th>
+	                                <td > <t t-esc="eficiencia.vent_net/eficiencia.act_tot"> </t> </td>
+	                                <td > <t t-esc="eficiencia.fecha_balance"> </t> </td>
+	                            </tr>
+
+							  </tbody>
+							</table>
+						</div>
+                    <!-- </div> -->
+					<!-- aqui va el contenedor que grafica -->
+					<!-- <div id="container" style="width:100%; height:400px;"></div> -->
+
+					<!-- este es el script ESTATICO que carga informacion en ese chart -->
+					<div class="col-md-6 text-center well well-sm">
+						<div id="container" style="width:100%; height:400px;"></div> <!-- aqui va el contenedor que grafica -->
+						<script type="text/javascript">
+								document.addEventListener('DOMContentLoaded', function () {
+							    var myChart = Highcharts.chart('container', {
+							        chart: {
+							            type: 'column'
+							        },
+							        title: {
+							            text: 'Rotacion de Activo'
+							        },
+							        xAxis: {
+							            categories: ['Apples', 'Bananas', 'Oranges']
+							        },
+							        yAxis: {
+							            title: {
+							                text: 'Ventas Netas / Activo Total'
+							            }
+							        },
+							        series: [{
+							            name: 'Jane',
+							            data: [1, 0, 4]
+							        }, {
+							            name: 'John',
+							            data: [5, 7, 3]
+							        }, {
+							            name: 'RC por Mes',
+							            data: [1,8,3]
+							        }]
+							    });
+							});
+						</script>
+					</div>
+
+				</nav>
+				<!-- <div>
+					<H1>
+						AQUI VAN TUS DATOS que vienen desde el controller...!!
+					</H1>
+                    <div class="card" >
+							<div class="col-md-6 text-center well well-sm">
+								<table class="table table-dark">
+								  <thead>
+								    <tr>
+								      <th scope="col">#</th>
+								      <th scope="col">activo_corriente</th>
+								      <th scope="col">pasivo_corriente</th>
+								      <th scope="col">inventario</th>
+								    </tr>
+								  </thead>
+								  <tbody>
+	
+		                            <tr  
+		                                t-foreach="modelo_liquidez" t-as="liquidez" t-att-value="liquidez" >
+								      <th scope="row"><t t-esc="liquidez.id"> </t></th>
+		                                <td > <t t-esc="liquidez.activo_corriente"> </t> </td>
+		                                <td > <t t-esc="liquidez.pasivo_corriente"> </t> </td>
+		                                <td > <t t-esc="liquidez.inventario"> </t> </td>
+		                            </tr>
+
+								  </tbody>
+								</table>
+							</div>
+                    </div>
+				</div> -->
+	    	</div>
+    	</t>
+    </template>
+
+    <!-- Import de los Js y CSS -->
+    <template id="assets_indicadores"  name="importe" inherit_id="website.assets_frontend">
+        <xpath expr="//link[last()]" position="after">
+            <link rel="stylesheet" href="/indicadores/static/src/highcharts/css/highcharts.css"/>
+        </xpath>
+
+        <xpath expr="//script[last()]" position="after">
+            <script type="text/javascript" src="/indicadores/static/src/highcharts/highcharts.js"/>
+            <script type="text/javascript" src="/indicadores/static/src/highcharts/modules/exporting.js"/>
+            <script type="text/javascript" src="/indicadores/static/src/highcharts/modules/export-data.js"/>
+        </xpath>
+    </template>
+
+
+
+</odoo>

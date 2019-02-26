@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+
+
+   <!-- Menú Superior -->
+    <menuitem id="main_indicador_liquidez"
+        name="Liquidez"
+        sequence="4"
+        parent="main_siempre"/>
+    <menuitem id="listado_liquidez"
+        name="Listado de Liquidez"
+        sequence="4"
+        action="liquidez_action"
+        parent="main_indicador_liquidez"/>
+
+</odoo>
