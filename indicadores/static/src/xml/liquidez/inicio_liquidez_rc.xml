@@ -5,6 +5,7 @@
     <template id="inicio_liquidez_rc" name="Indicadores Financieros de Liquidez SIEMPRE" >
 
     	<t t-call="website.layout">
+<<<<<<< HEAD
 		    	
 
 		<!--  ESTO SE LLAMA reutilizar una plantilla, esto lo que hace es llamar a una rutina de elementos que ya fueron creados -->
@@ -17,6 +18,16 @@
 
 	    	<div class="container">
 	    	 	<br/>
+=======
+	    	<div class="container">
+	    	 	<br/>
+	    	 	<header class="row">
+	    	 		<div class="col-md-12 text-center well well-sm">
+						<a href="/indicadores/liquidez"><button class="btn btn-info btn-lg">Liquidez</button></a>
+						<a href="/indicadores/eficiencia"><button class="btn btn-outline-info btn-lg">Eficiencia</button></a>
+					</div>
+				</header>
+>>>>>>> c8ae2cfcb71cbf3d759074a0219fd37ff70cbebc
 				<br/><br/>
 	    	 	<nav class="row">
 					<div class="col-md-12 text-center well well-sm">
@@ -36,6 +47,7 @@
 					</div>
 					<br/><br/><br/>
 				</nav>
+<<<<<<< HEAD
 
 				<!-- Formulario para realizar las consutas por años-->  
 				<nav class="row">
@@ -131,22 +143,179 @@
 							            }
 							        },
 							        plotOptions: {
+=======
+				<nav class="row">
+					<!-- <div class="card" > -->
+						<div class="col-md-6 text-center well well-sm">
+							<table class="table table-dark" id="tabla_celestial">
+							  <thead>
+							    <tr>
+							      <th scope="col">#</th>
+							      <th scope="col">Razon Corriente</th>
+							      <th scope="col">Mes y Año</th>
+							    </tr>
+							  </thead>
+							  <tbody>
+
+	                            <tr t-foreach="modelo_liquidez" t-as="liquidez" t-att-value="liquidez.id" 
+                                	t-att-class="'columna'"
+	                            	>
+
+							      	<th scope="row"><t t-esc="liquidez.id"> </t></th>
+	                                <td > <t t-esc="liquidez.activo_corriente/liquidez.pasivo_corriente"> </t> </td>
+	                                <td > <t t-esc="liquidez.fecha_balance"> </t> </td>
+	                            </tr>
+
+							  </tbody>
+							</table>
+						</div>
+                    <!-- </div> -->
+					<!-- aqui va el contenedor que grafica -->
+					<div id="container" style="width:100%; height:400px;"></div> 
+
+					<!-- este es el script ESTATICO que carga informacion en ese chart -->
+					<div class="col-md-6 text-center well well-sm">
+						<div id="container" style="width:100%; height:400px;"></div> <!-- aqui va el contenedor que grafica -->
+						<script type="text/javascript">
+								document.addEventListener('DOMContentLoaded', function () {
+
+									var lista_valores_y = []
+									var lista_valores_x = []
+									var table = document.getElementById("tabla_celestial");
+									for (var i = 1, row; row = table.rows[i]; i++) {
+									   //iterate through rows
+									   //rows would be accessed using the "row" variable assigned in the for loop
+									   for (var j = 0, col; col = row.cells[j]; j++) {
+									     //iterate through columns
+									     //columns would be accessed using the "col" variable assigned in the for loop
+									     console.log(col.textContent);
+
+									     if( j == 1){
+									     	lista_valores_y.push(parseFloat(col.textContent))
+									     }
+
+									     if( j == 2){
+									     	lista_valores_x.push(col.textContent)
+									     }
+
+									   }  
+									}
+
+
+
+							 	console.log(lista_valores_y);
+							 	console.log(lista_valores_x);
+
+
+
+							    var myChart = 	Highcharts.chart('container', {
+
+								    title: {
+								        text: 'ALgun Titulo TRI-VERGATARIO AQUi'
+								    },
+
+								    subtitle: {
+								        text: 'ALgun SubTitulo Ultra-TRI-VERGATARIO AQUi.'
+								    },
+
+
+								    xAxis: {
+								        categories: lista_valores_x,
+								    },
+
+								    yAxis: {
+								        title: {
+								            text: 'Algun Nombre a las Y'
+								        }
+								    },
+								    legend: {
+								        layout: 'vertical',
+								        align: 'right',
+								        verticalAlign: 'middle'
+								    },
+
+								    plotOptions: {
+>>>>>>> c8ae2cfcb71cbf3d759074a0219fd37ff70cbebc
 								        series: {
 								            label: {
 								                connectorAllowed: false
 								            },
 								        }
 								    },
+<<<<<<< HEAD
 							        series: [{
 							            name: 'Razon Corriente por Mes',
 							            data: lista_valores_y,
 							        }]
 							    });
+=======
+
+								    series: [{
+								        name: 'Resultado',
+								        data: lista_valores_y,
+								    }],
+
+								    responsive: {
+								        rules: [{
+								            condition: {
+								                maxWidth: 500
+								            },
+								            chartOptions: {
+								                legend: {
+								                    layout: 'horizontal',
+								                    align: 'center',
+								                    verticalAlign: 'bottom'
+								                }
+								            }
+								        }]
+								    }
+
+								});
+
+
+
+
+
+
+>>>>>>> c8ae2cfcb71cbf3d759074a0219fd37ff70cbebc
 							});
 						</script>
 					</div>
 
 				</nav>
+<<<<<<< HEAD
+=======
+				<!-- <div>
+					<H1>
+						AQUI VAN TUS DATOS que vienen desde el controller...!!
+					</H1>
+                    <div class="card" >
+							<div class="col-md-6 text-center well well-sm">
+								<table class="table table-dark">
+								  <thead>
+								    <tr>
+								      <th scope="col">#</th>
+								      <th scope="col">activo_corriente</th>
+								      <th scope="col">pasivo_corriente</th>
+								      <th scope="col">inventario</th>
+								    </tr>
+								  </thead>
+								  <tbody>
+	
+		                            <tr  
+		                                t-foreach="modelo_liquidez" t-as="liquidez" t-att-value="liquidez" >
+								      <th scope="row"><t t-esc="liquidez.id"> </t></th>
+		                                <td > <t t-esc="liquidez.activo_corriente"> </t> </td>
+		                                <td > <t t-esc="liquidez.pasivo_corriente"> </t> </td>
+		                                <td > <t t-esc="liquidez.inventario"> </t> </td>
+		                            </tr>
+
+								  </tbody>
+								</table>
+							</div>
+                    </div>
+				</div> -->
+>>>>>>> c8ae2cfcb71cbf3d759074a0219fd37ff70cbebc
 	    	</div>
     	</t>
     </template>

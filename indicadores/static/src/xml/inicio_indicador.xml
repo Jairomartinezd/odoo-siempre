@@ -12,16 +12,20 @@
 						<a href="/indicadores/eficiencia"><button class="btn btn-info btn-lg">Eficiencia</button></a>
 					</div>
 				</nav>
+<<<<<<< HEAD
 				<br/><br/>
 				<div class="row justify-content-md-center">
 	            	<div class="container fluid">
 	            		<img class="img-fluid" src="/indicadores/static/src/img/BannerInicio.png"  />
 	            	</div>
 		    	</div>
+=======
+>>>>>>> c8ae2cfcb71cbf3d759074a0219fd37ff70cbebc
 	    	 </div>
     	</t>
     </template>
 
+<<<<<<< HEAD
     <template id="imagen_principal" name="Indicadores Financieros SIEMPRE"  >
 	    	 <div class="container">
 
@@ -43,4 +47,6 @@
 
 
 
+=======
+>>>>>>> c8ae2cfcb71cbf3d759074a0219fd37ff70cbebc
 </odoo>

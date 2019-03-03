@@ -23,6 +23,7 @@ class MainController(http.Controller):
 		return http.request.render('indicadores.inicio_liquidez')
 
 	@http.route(['/indicadores/liquidez/razonCorriente'], auth='public', website=True)
+<<<<<<< HEAD
 	def inicio_liquidez_RC(self,**args):
 		##la variable fecha_anio, viene por request GET entonces podremos capturarla.!
 		self._logger.info("  parametro fecha :: %s"%(args))
@@ -41,6 +42,15 @@ class MainController(http.Controller):
 		diccionario_res = {
 			'modelo_liquidez': modelo_liquidez,
 			'usuarios':usuarios
+=======
+	def inicio_liquidez_RC(self):
+
+		modelo_liquidez = http.request.env['liquidez'].sudo().search([])
+
+
+		diccionario_res = {
+			'modelo_liquidez': modelo_liquidez,
+>>>>>>> c8ae2cfcb71cbf3d759074a0219fd37ff70cbebc
 		}
 
 		return http.request.render('indicadores.inicio_liquidez_rc', diccionario_res)
